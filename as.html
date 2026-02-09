@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nizcare - OSHWC Compliance Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(30, 166, 154, 0.05) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 80%, rgba(30, 166, 154, 0.05) 0%, transparent 20%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 0;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(30, 166, 154, 0.8) 0%, rgba(42, 157, 143, 0.8) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid #1ea69a;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #1ea69a, #2a9d8f);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .card h2 {
+            color: #1ea69a;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, #f8fcfb 0%, #e8f5f3 100%);
+            border-left: 5px solid #1ea69a;
+            border-radius: 0 12px 12px 0;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card::before {
+            content: '\f005';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.1;
+            color: #1ea69a;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(30, 166, 154, 0.15);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: #1ea69a;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            color: #2a9d8f;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(120deg, #1ea69a 0%, #2a9d8f 100%);
+            border-radius: 20px;
+            margin: 40px 0;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #1ea69a;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            background: #f8f9fa;
+        }
+
+        .footer {
+            background: #1ea69a;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 40px;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .footer p {
+            opacity: 0.9;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: white;
+            color: #1ea69a;
+            transform: translateY(-3px);
+        }
+
+        .greeting {
+            font-size: 1.4rem;
+            color: #2a9d8f;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1ea69a;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="https://raw.githubusercontent.com/Nizcare45/Email_template/refs/heads/main/images/Untitled%20design.jpg.jpeg" alt="Manufacturing Workplace Safety & Health" class="header-image">
+            <div class="header-overlay">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h1>OSHWC Compliance in Manufacturing</h1>
+                    <p class="subtitle">Ensuring workplace safety and regulatory compliance for your manufacturing organization</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="greeting">
+            <i class="fas fa-user"></i> Hi {{Name}},
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Compliance Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Companies Served</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <h2><i class="fas fa-hard-hat"></i> Manufacturing Safety Challenges</h2>
+                <p>In the manufacturing industry, employee health and safety are critical due to <strong>shop-floor exposure, physical workload, shift duties, and operational risks.</strong> These challenges require constant vigilance and proactive safety measures to protect workers and maintain productivity.</p>
+                <p>Our solutions help you navigate these complex safety requirements while optimizing your operations.</p>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-balance-scale"></i> OSHWC Framework Compliance</h2>
+                <p>Under the <strong>OSHWC framework</strong>, organizations are required to implement preventive health measures and maintain employee health records as part of statutory compliance. This includes regular assessments, documentation, and continuous improvement processes.</p>
+                <p>We provide comprehensive tools and expertise to ensure your organization meets all regulatory requirements efficiently.</p>
+            </div>
+        </div>
+
+        <div class="highlight-card">
+            <p>Periodic health check-ups for employees aged <strong>40 years and above</strong> are mandatory, helping organizations identify risks early and ensure workplace safety. Our preventive care programs go beyond compliance to promote long-term employee wellness and productivity.</p>
+        </div>
+
+        <h2 style="text-align: center; color: #2a9d8f; margin: 40px 0 20px; font-size: 1.8rem;">
+            <i class="fas fa-tools"></i> Our Compliance Solutions
+        </h2>
+
+        <div class="features-grid">
+            <div class="feature">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Health Monitoring</h3>
+                <p>Regular health assessments and monitoring for all employees to ensure workplace safety compliance.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-file-contract"></i>
+                <h3>Documentation</h3>
+                <p>Complete record keeping and documentation management for all compliance requirements.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-chart-line"></i>
+                <h3>Analytics</h3>
+                <p>Detailed analytics and reporting to track compliance metrics and identify trends.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-headset"></i>
+                <h3>Expert Support</h3>
+                <p>Access to our team of compliance experts for guidance and support.</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Partner with Nizcare for Comprehensive Compliance</h2>
+            <p>Nizcare supports manufacturing organizations by enabling structured preventive care programs aligned with OSHWC requirements. Our platform simplifies compliance management while promoting a culture of safety and wellness.</p>
+            <a href="https://nizcare.com" class="btn">Get Started Today</a>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-hands-helping"></i> Why Choose Nizcare?</h2>
+            <p>With over a decade of experience in occupational health and safety compliance, we understand the unique challenges faced by manufacturing organizations. Our solutions are tailored specifically to meet the complex requirements of industrial environments.</p>
+            <p>Our platform combines regulatory expertise with cutting-edge technology to deliver seamless compliance management, risk mitigation, and employee wellness programs.</p>
+        </div>
+
+        <div class="footer">
+            <h3><i class="fas fa-heart"></i> Nizcare Health & Wellness</h3>
+            <p>© 2026 Nizcare. All Rights Reserved.</p>
+            <p>Helping organizations create safer, healthier workplaces</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add subtle animations when elements come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe cards
+            document.querySelectorAll('.card, .feature, .stat-item').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+            
+            // Add hover effects to interactive elements
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    button.style.transform = 'translateY(-3px)';
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
